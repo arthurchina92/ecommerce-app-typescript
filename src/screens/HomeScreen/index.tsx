@@ -6,7 +6,7 @@ import products from '../../data/products';
 const HomeScreen = () => {
   return (
     <View>
-      <ProductItem item={products[0]} />
+      <ProductItem item={products[5]} />
     </View>
   );
 };

@@ -8,7 +8,7 @@ interface ProductItemProps {
     id: string;
     title: string;
     image: string;
-    avgRating: string;
+    avgRating: number;
     ratings: number;
     price: number;
     oldPrice?: number;
@@ -32,36 +32,15 @@ const ProductItem = ({item}: ProductItemProps) => {
             {item.title}
           </Text>
           <View style={styles.rating}>
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star-half-empty"
-              size={18}
-              color={'#e47911'}
-            />
-            <FontAwesome
-              style={styles.star}
-              name="star-o"
-              size={18}
-              color={'#e47911'}
-            />
+            {[0, 0, 0, 0, 0].map((el, i) => (
+              <FontAwesome
+                style={styles.star}
+                name={i < Math.floor(item.avgRating) ? 'star' : 'star-o'}
+                size={18}
+                color={'#e47911'}
+              />
+            ))}
+
             <Text>{item.ratings}</Text>
           </View>
           <View style={styles.priceContainer}>
