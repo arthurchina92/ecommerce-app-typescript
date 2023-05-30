@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
 import ProductItem from '../../components/ProductItem';
 import products from '../../data/products';
@@ -6,7 +6,11 @@ import products from '../../data/products';
 const HomeScreen = () => {
   return (
     <View>
-      <ProductItem item={products[5]} />
+      <FlatList
+        data={products}
+        renderItem={({item}) => <ProductItem item={item} />}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
