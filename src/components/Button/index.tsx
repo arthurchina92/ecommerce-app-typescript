@@ -5,12 +5,13 @@ import styles from './styles';
 interface ButtonProps {
   text: string;
   onPress: () => void;
+  containerStyles?: Object;
 }
 
-const Button = ({text, onPress}: ButtonProps) => {
+const Button = ({text, onPress, containerStyles}: ButtonProps) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Text>{text}</Text>
+    <Pressable style={[styles.button, containerStyles]} onPress={onPress}>
+      <Text style={styles.buttonText}>{text}</Text>
     </Pressable>
   );
 };
