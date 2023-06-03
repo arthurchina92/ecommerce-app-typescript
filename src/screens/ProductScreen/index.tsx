@@ -5,6 +5,7 @@ import styles from './styles';
 import {Picker} from '@react-native-picker/picker';
 import QuantitySelector from '../../components/QuantitySelector';
 import Button from '../../components/Button';
+import ImageCarousel from '../../components/ImageCarousel';
 
 const ProductScreen = () => {
   const [selectColor, setSelectColor] = useState(
@@ -15,6 +16,7 @@ const ProductScreen = () => {
   return (
     <View style={styles.root}>
       <Text>{product.title}</Text>
+      <ImageCarousel images={product.images} />
       <View style={styles.priceContainer}>
         <Text style={styles.price}> from ${product.price}</Text>
         {product.oldPrice && (
