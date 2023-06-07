@@ -2,7 +2,7 @@ import {View, Text, FlatList, Image, useWindowDimensions} from 'react-native';
 import React, {useState, useCallback} from 'react';
 import styles from './styles';
 
-const ImageCarousel = ({images}: {images: [string]}) => {
+const ImageCarousel = ({images}: {images: string[]}) => {
   const windowWith = useWindowDimensions().width;
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -34,7 +34,7 @@ const ImageCarousel = ({images}: {images: [string]}) => {
         onViewableItemsChanged={handleViewableItemsChanged}
       />
       <View style={styles.dots}>
-        {images.map((map, index) => (
+        {images.map((image, index) => (
           <View
             style={[
               styles.dot,
