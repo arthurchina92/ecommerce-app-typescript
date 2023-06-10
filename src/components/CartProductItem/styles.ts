@@ -2,11 +2,12 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
-    marginVertical: 10,
+    marginVertical: 15,
     marginHorizontal: 6,
     borderWidth: 1,
     borderColor: '#959696',
     borderRadius: 10,
+    backgroundColor: '#ffffff',
   },
   row: {
     flexDirection: 'row',
@@ -49,7 +50,8 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   quantityContainer: {
-    marginLeft: 10,
+    marginLeft: 25,
+    margintop: 10,
   },
 });
 

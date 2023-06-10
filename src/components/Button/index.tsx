@@ -10,9 +10,11 @@ interface ButtonProps {
 
 const Button = ({text, onPress, containerStyles}: ButtonProps) => {
   return (
-    <Pressable style={[styles.button, containerStyles]} onPress={onPress}>
-      <Text style={styles.buttonText}>{text}</Text>
-    </Pressable>
+    <View>
+      <Pressable style={[styles.button, containerStyles]} onPress={onPress}>
+        <Text style={styles.buttonText}>{text}</Text>
+      </Pressable>
+    </View>
   );
 };
 
