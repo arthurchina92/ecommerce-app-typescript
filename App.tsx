@@ -12,6 +12,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import ProductScreen from './src/screens/ProductScreen';
 import ShoppingCartScreen from './src/screens/ShoppingCartScreen';
+import AdressScreen from './src/screens/AdressScreen';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,7 +27,8 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ShoppingCartScreen />
+      <AdressScreen />
+      {/* <ShoppingCartScreen /> */}
       {/* <ProductScreen /> */}
       {/* <HomeScreen /> */}
     </SafeAreaView>

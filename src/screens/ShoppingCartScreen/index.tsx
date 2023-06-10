@@ -17,6 +17,7 @@ const ShoppingCartScreen = () => {
           data={products}
           renderItem={({item}) => <CartProductItem cartItem={item} />}
           showsVerticalScrollIndicator={true}
+          // eslint-disable-next-line react/no-unstable-nested-components
           ListHeaderComponent={() => (
             <View style={styles.header}>
               <Text style={styles.subtotal}>
