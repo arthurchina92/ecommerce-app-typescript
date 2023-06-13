@@ -1,18 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import ProductScreen from './src/screens/ProductScreen';
-import ShoppingCartScreen from './src/screens/ShoppingCartScreen';
-import AdressScreen from './src/screens/AdressScreen';
+import Router from './src/router';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,14 +13,8 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <AdressScreen />
-      {/* <ShoppingCartScreen /> */}
-      {/* <ProductScreen /> */}
-      {/* <HomeScreen /> */}
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Router />
     </SafeAreaView>
   );
 }
