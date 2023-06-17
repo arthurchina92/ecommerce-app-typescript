@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     color: 'red',
     marginLeft: 10,
   },
+  pickerText: {
+    fontSize: 18,
+    marginTop: 20,
+  },
 });
 
 export default styles;

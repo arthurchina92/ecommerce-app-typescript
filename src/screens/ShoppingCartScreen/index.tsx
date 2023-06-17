@@ -1,5 +1,6 @@
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import CartProductItem from '../../components/CartProductItem';
 import products from '../../data/cart';
 import Button from '../../components/Button';
@@ -10,6 +11,10 @@ const ShoppingCartScreen = () => {
       summedPrice + product.item.price * product.quantity,
     0,
   );
+  const navigation = useNavigation();
+  const onCheckOut = () => {
+    navigation.navigate('Address');
+  };
   return (
     <>
       <View style={styles.page}>
@@ -26,7 +31,7 @@ const ShoppingCartScreen = () => {
               </Text>
               <Button
                 text="Proceed to checkout"
-                onPress={() => console.warn('go to checkout')}
+                onPress={onCheckOut}
                 containerStyles={styles.buttonContainer}
               />
             </View>

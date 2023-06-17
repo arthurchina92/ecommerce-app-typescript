@@ -1,5 +1,6 @@
 import {View, Text, ScrollView} from 'react-native';
 import React, {useState} from 'react';
+import {useRoute} from '@react-navigation/native';
 import product from '../../data/product';
 import styles from './styles';
 import {Picker} from '@react-native-picker/picker';
@@ -12,6 +13,11 @@ const ProductScreen = () => {
     product.options ? product.options[0] : null,
   );
   const [quantity, setQuantity] = useState(1);
+
+  const route = useRoute();
+  console.log(route.params);
+  console.log('hello world');
+
   console.log(selectColor);
   return (
     <ScrollView>

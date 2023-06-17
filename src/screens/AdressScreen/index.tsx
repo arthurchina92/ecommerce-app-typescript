@@ -59,6 +59,10 @@ const AdressScreen = () => {
       keyboardVerticalOffset={20}>
       <ScrollView style={styles.root}>
         <View style={styles.container}>
+          <Text style={{...styles.label, marginTop: 20}}>
+            {' '}
+            Select a country
+          </Text>
           <Picker selectedValue={country} onValueChange={setCountry}>
             {countries.map(country => (
               <Picker.Item

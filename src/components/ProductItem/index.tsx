@@ -21,7 +21,7 @@ const ProductItem = ({item}: ProductItemProps) => {
 
   const onPress = () => {
     console.warn('Item pressed');
-    navigation.navigate('ProductDetails');
+    navigation.navigate('ProductDetails', {id: item.id});
   };
 
   return (
