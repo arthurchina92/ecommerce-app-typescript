@@ -1,9 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Router from './src/router';
+
+import {Amplify} from 'aws-amplify';
+import awsExports from './src/aws-exports';
+Amplify.configure(awsExports);
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
