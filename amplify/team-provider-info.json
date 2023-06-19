@@ -10,6 +10,11 @@
       "StackName": "amplify-ecommercetypescript-dev-133021",
       "StackId": "arn:aws:cloudformation:us-east-1:971016175301:stack/amplify-ecommercetypescript-dev-133021/93c8de90-0e0e-11ee-9005-0aa50f46782d",
       "AmplifyAppId": "d266gmpb7qmh8m"
+    },
+    "categories": {
+      "auth": {
+        "ecommercetypescript8443ea73": {}
+      }
     }
   }
 }
