@@ -2,6 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AdressScreen from '../screens/AdressScreen';
 import ProductScreen from '../screens/ProductScreen';
+import MenuScreen from '../screens/MenuScreen';
 import Entypo from 'react-native-vector-icons/Entypo';
 import HomeStack from './HomeStack';
 import ShoppingCartStack from './ShoppingCartStack';
@@ -28,7 +29,7 @@ function BottomTabNav() {
       />
       <Tab.Screen
         name="Address"
-        component={AdressScreen}
+        component={MenuScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Entypo name="open-book" color={color} size={25} />

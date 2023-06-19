@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "ecommercetypescript",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2024-06-18T04:11:36.788Z",
+      "keyDescription": "Api key amazonclone"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    }
+  }
+}
