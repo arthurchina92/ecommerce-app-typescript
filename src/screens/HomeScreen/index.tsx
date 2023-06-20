@@ -11,15 +11,7 @@ const HomeScreen = ({searchValue}: {searchValue: string}) => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const results = await DataStore.query(Product);
-      setProducts(results);
-      console.log(
-        'Posts retrieved successfully!',
-        JSON.stringify(results, null, 2),
-      );
-    };
-    fetchProducts();
+    DataStore.query(Product).then(setProducts);
   }, []);
 
   console.log(searchValue);
