@@ -1,7 +1,9 @@
-import {View, Text, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
-import product from '../../data/product';
+// import product from '../../data/product';
+import {DataStore, Auth} from 'aws-amplify';
+import {Product, CartProduct} from '../../models';
 import styles from './styles';
 import {Picker} from '@react-native-picker/picker';
 import QuantitySelector from '../../components/QuantitySelector';
@@ -9,14 +11,46 @@ import Button from '../../components/Button';
 import ImageCarousel from '../../components/ImageCarousel';
 
 const ProductScreen = () => {
-  const [selectColor, setSelectColor] = useState(
-    product.options ? product.options[0] : null,
-  );
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [selectColor, setSelectColor] = useState<string | undefined>(undefined);
   const [quantity, setQuantity] = useState(1);
 
   const route = useRoute();
   console.log(route.params);
-  console.log('hello world');
+
+  useEffect(() => {
+    if (!route.params?.id) {
+      return;
+    }
+    DataStore.query(Product, route.params.id).then(setProduct);
+  }, [route.params?.id]);
+
+  useEffect(() => {
+    if (product?.options) {
+      setSelectColor(product.options[0]);
+    }
+  }, [product]);
+
+  const onAddToCart = async () => {
+    const userData = await Auth.currentAuthenticatedUser();
+    console.log(userData);
+
+    if (!product || !userData) {
+      return;
+    }
+
+    const newCartProduct = new CartProduct({
+      userSub: userData.attributes.sub,
+      quantity,
+      option: selectColor || null,
+      id: product.id,
+    });
+    DataStore.save(newCartProduct);
+  };
+
+  if (!product) {
+    return <ActivityIndicator />;
+  }
 
   console.log(selectColor);
   return (
@@ -25,9 +59,9 @@ const ProductScreen = () => {
         <Text>{product.title}</Text>
         <ImageCarousel images={product.images} key={product.id} />
         <View style={styles.priceContainer}>
-          <Text style={styles.price}> from ${product.price}</Text>
+          <Text style={styles.price}> from ${product.price.toFixed(2)}</Text>
           {product.oldPrice && (
-            <Text style={styles.oldPrice}>${product.oldPrice}</Text>
+            <Text style={styles.oldPrice}>${product.oldPrice.toFixed(2)}</Text>
           )}
         </View>
         <View style={styles.picker}>
@@ -43,9 +77,7 @@ const ProductScreen = () => {
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
         <Button
           text={'Add to cart'}
-          onPress={() => {
-            console.warn('Add to cart');
-          }}
+          onPress={onAddToCart}
           containerStyles={{backgroundColor: '#e3c905'}}
         />
         <Button
