@@ -1,103 +1,106 @@
-import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
+import {
+  ModelInit,
+  MutableModel,
+  __modelMeta__,
+  ManagedIdentifier,
+} from '@aws-amplify/datastore';
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+import {
+  LazyLoading,
+  LazyLoadingDisabled,
+  AsyncItem,
+} from '@aws-amplify/datastore';
 
-
-
-
-
-type EagerBlog = {
+type EagerProduct = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Blog, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly name: string;
-  readonly posts?: (Post | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyBlog = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Blog, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly name: string;
-  readonly posts: AsyncCollection<Post>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Blog = LazyLoading extends LazyLoadingDisabled ? EagerBlog : LazyBlog
-
-export declare const Blog: (new (init: ModelInit<Blog>) => Blog) & {
-  copyOf(source: Blog, mutator: (draft: MutableModel<Blog>) => MutableModel<Blog> | void): Blog;
-}
-
-type EagerPost = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Post, 'id'>;
+    identifier: ManagedIdentifier<Product, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly title: string;
-  readonly blog?: Blog | null;
-  readonly comments?: (Comment | null)[] | null;
+  readonly description?: string | null;
+  readonly image: string;
+  readonly images?: string[] | null;
+  readonly options?: string[] | null;
+  readonly avgRating?: number | null;
+  readonly ratings?: number | null;
+  readonly price: number;
+  readonly oldPrice?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  readonly blogPostsId?: string | null;
-}
+};
 
-type LazyPost = {
+type LazyProduct = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Post, 'id'>;
+    identifier: ManagedIdentifier<Product, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly title: string;
-  readonly blog: AsyncItem<Blog | undefined>;
-  readonly comments: AsyncCollection<Comment>;
+  readonly description?: string | null;
+  readonly image: string;
+  readonly images?: string[] | null;
+  readonly options?: string[] | null;
+  readonly avgRating?: number | null;
+  readonly ratings?: number | null;
+  readonly price: number;
+  readonly oldPrice?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  readonly blogPostsId?: string | null;
-}
+};
 
-export declare type Post = LazyLoading extends LazyLoadingDisabled ? EagerPost : LazyPost
+export declare type Product = LazyLoading extends LazyLoadingDisabled
+  ? EagerProduct
+  : LazyProduct;
 
-export declare const Post: (new (init: ModelInit<Post>) => Post) & {
-  copyOf(source: Post, mutator: (draft: MutableModel<Post>) => MutableModel<Post> | void): Post;
-}
+export declare const Product: (new (init: ModelInit<Product>) => Product) & {
+  copyOf(
+    source: Product,
+    mutator: (draft: MutableModel<Product>) => MutableModel<Product> | void,
+  ): Product;
+};
 
-type EagerComment = {
+type EagerCartProduct = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Comment, 'id'>;
+    identifier: ManagedIdentifier<CartProduct, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly post?: Post | null;
-  readonly content: string;
+  readonly quantity?: number | null;
+  readonly option?: string | null;
+  readonly productID: string;
+  readonly product?: Product | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  readonly postCommentsId?: string | null;
-}
+  readonly cartProductProductId?: string | null;
+};
 
-type LazyComment = {
+type LazyCartProduct = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Comment, 'id'>;
+    identifier: ManagedIdentifier<CartProduct, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly post: AsyncItem<Post | undefined>;
-  readonly content: string;
+  readonly quantity?: number | null;
+  readonly option?: string | null;
+  readonly productID: string;
+  readonly product: AsyncItem<Product | undefined>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  readonly postCommentsId?: string | null;
-}
+  readonly cartProductProductId?: string | null;
+};
 
-export declare type Comment = LazyLoading extends LazyLoadingDisabled ? EagerComment : LazyComment
+export declare type CartProduct = LazyLoading extends LazyLoadingDisabled
+  ? EagerCartProduct
+  : LazyCartProduct;
 
-export declare const Comment: (new (init: ModelInit<Comment>) => Comment) & {
-  copyOf(source: Comment, mutator: (draft: MutableModel<Comment>) => MutableModel<Comment> | void): Comment;
-}
+export declare const CartProduct: (new (
+  init: ModelInit<CartProduct>,
+) => CartProduct) & {
+  copyOf(
+    source: CartProduct,
+    mutator: (
+      draft: MutableModel<CartProduct>,
+    ) => MutableModel<CartProduct> | void,
+  ): CartProduct;
+};
