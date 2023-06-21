@@ -18,7 +18,7 @@ const HeaderComponent = ({
   setSearchValue,
 }: HeaderComponentProps) => {
   return (
-    <SafeAreaView style={{backgroundColor: '#22e3dd'}}>
+    <SafeAreaView style={{backgroundColor: '#abdbe3'}}>
       <View
         style={{
           height: 40,

@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   root: {
     padding: 30,
+    backgroundColor: '#cce7e8',
   },
   priceContainer: {
     flexDirection: 'row',

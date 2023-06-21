@@ -45,6 +45,7 @@ const ShoppingCartScreen = () => {
 const styles = StyleSheet.create({
   page: {
     padding: 10,
+    backgroundColor: '#abdbe3',
   },
   header: {
     marginBottom: 10,

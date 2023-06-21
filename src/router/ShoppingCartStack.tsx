@@ -9,9 +9,9 @@ const ShoppingCartStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        options={{headerShown: false}}
         component={ShoppingCartScreen}
         name="Cart"
-        options={{title: 'Cart'}}
       />
       <Stack.Screen
         component={AdressScreen}

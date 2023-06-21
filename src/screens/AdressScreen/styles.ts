@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  root: {},
+  keyboardAvoiding: {
+    flex: 1,
+  },
+  root: {
+    backgroundColor: '#abdbe3',
+  },
   row: {
     flexDirection: 'row',
   },

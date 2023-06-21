@@ -2,9 +2,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AdressScreen from '../screens/AdressScreen';
 import MenuScreen from '../screens/MenuScreen';
-import Entypo from 'react-native-vector-icons/Entypo';
 import HomeStack from './HomeStack';
 import ShoppingCartStack from './ShoppingCartStack';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MCIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,6 +19,15 @@ function BottomTabNav() {
         tabBarActiveTintColor: '#e47911',
       }}>
       <Tab.Screen
+        name="Menu"
+        component={MenuScreen}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Entypo name="menu" color={color} size={25} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Home"
         component={HomeStack}
         options={{
@@ -27,20 +37,11 @@ function BottomTabNav() {
         }}
       />
       <Tab.Screen
-        name="Menu"
-        component={MenuScreen}
-        options={{
-          tabBarIcon: ({color}) => (
-            <Entypo name="open-book" color={color} size={25} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Address"
         component={AdressScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="shop" color={color} size={25} />
+            <MCIcons name="post-outline" color={color} size={25} />
           ),
         }}
       />

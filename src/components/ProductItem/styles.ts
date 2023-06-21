@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
+    backgroundColor: '#69bdd2',
     marginVertical: 10,
     marginHorizontal: 6,
     flexDirection: 'row',

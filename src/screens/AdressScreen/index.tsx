@@ -12,6 +12,7 @@ import styles from './styles';
 import {Picker} from '@react-native-picker/picker';
 import countrylist from 'country-list';
 import Button from '../../components/Button';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const countries = countrylist.getData();
 
@@ -55,6 +56,7 @@ const AdressScreen = () => {
 
   return (
     <KeyboardAvoidingView
+      style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       keyboardVerticalOffset={20}>
       <ScrollView style={styles.root}>

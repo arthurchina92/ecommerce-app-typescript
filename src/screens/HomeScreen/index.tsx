@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import ProductItem from '../../components/ProductItem';
 import {DataStore} from 'aws-amplify';
 import {Product} from '../../models';
+import styles from './styles';
 import 'core-js/full/symbol/async-iterator';
 
 // import products from '../../data/products';
@@ -16,7 +17,7 @@ const HomeScreen = ({searchValue}: {searchValue: string}) => {
 
   console.log(searchValue);
   return (
-    <View>
+    <View style={styles.body}>
       <FlatList
         data={products}
         renderItem={({item}) => <ProductItem item={item} />}
